@@ -35,7 +35,7 @@ namespace ConfigurationExample
         {
             NotificationSource = new NotificationsSource
             {
-                MaximumNotificationCount = 4,
+                MaximumNotificationCount = NotificationsSource.UnlimitedNotifications,
                 NotificationLifeTime = TimeSpan.FromSeconds(3)
             };
         }

@@ -14,6 +14,8 @@ namespace ToastNotifications
         private bool _isOpen;
         private bool _isTopmost;
 
+        public const int UnlimitedNotifications = -1;
+
         public ObservableCollection<NotificationViewModel> NotificationMessages { get; private set; }
 
         public long MaximumNotificationCount { get; set; }
@@ -71,13 +73,16 @@ namespace ToastNotifications
                 IsOpen = true;
             }
 
-            if (NotificationMessages.Count >= MaximumNotificationCount)
+            if (MaximumNotificationCount != UnlimitedNotifications)
             {
-                int removeCount = (int) (NotificationMessages.Count - MaximumNotificationCount) + 1;
-                
-                var itemsToRemove = NotificationMessages.OrderBy(x => x.CreateTime).Take(removeCount).Select(x => x.Id).ToList();
-                foreach (var id in itemsToRemove)
-                    Hide(id);
+                if (NotificationMessages.Count >= MaximumNotificationCount)
+                {
+                    int removeCount = (int)(NotificationMessages.Count - MaximumNotificationCount) + 1;
+
+                    var itemsToRemove = NotificationMessages.OrderBy(x => x.CreateTime).Take(removeCount).Select(x => x.Id).ToList();
+                    foreach (var id in itemsToRemove)
+                        Hide(id);
+                }
             }
 
             NotificationMessages.Add(new NotificationViewModel { Message = message, Type = type });
