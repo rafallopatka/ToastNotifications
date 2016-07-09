@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 namespace ConfigurationExample
 {
@@ -18,22 +19,22 @@ namespace ConfigurationExample
 
         private void Button_ShowInformationClick(object sender, RoutedEventArgs e)
         {
-            _vm.ShowInformation($"{_count++} Information");
+            _vm.ShowInformation(String.Format("{0} Information", _count++));
         }
 
         private void Button_ShowSuccessClick(object sender, RoutedEventArgs e)
         {
-            _vm.ShowSuccess($"{_count++} Success");
+            _vm.ShowSuccess(String.Format("{0} Success", _count++));
         }
 
         private void Button_ShowWarningClick(object sender, RoutedEventArgs e)
         {
-            _vm.ShowWarning($"{_count++} Warning");
+            _vm.ShowWarning(String.Format("{0} Warning", _count++));
         }
 
         private void Button_ShowErrorClick(object sender, RoutedEventArgs e)
         {
-            _vm.ShowError($"{_count++} Error");
+            _vm.ShowError(String.Format("{0} Error", _count++));
         }
     }
 }

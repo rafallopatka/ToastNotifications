@@ -14,7 +14,7 @@ namespace ConfigurationExample
             set
             {
                 _notificationSource = value;
-                OnPropertyChanged(nameof(NotificationSource));
+                OnPropertyChanged("NotificationSource");
             }
         }
 
@@ -26,7 +26,7 @@ namespace ConfigurationExample
             set
             {
                 _popupFlowDirection = value;
-                OnPropertyChanged(nameof(PopupFlowDirection));
+                OnPropertyChanged("PopupFlowDirection");
             }
         }
 
@@ -35,9 +35,6 @@ namespace ConfigurationExample
         {
             NotificationSource = new NotificationsSource
             {
-                /*
-                MaximumNotificationCount = 4,
-                */
                 MaximumNotificationCount = NotificationsSource.UnlimitedNotifications,
                 NotificationLifeTime = TimeSpan.FromSeconds(3)
             };
@@ -68,7 +65,7 @@ namespace ConfigurationExample
         protected virtual void OnPropertyChanged(string propertyName = null)
         {
             var handler = PropertyChanged;
-            handler?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            if (handler != null) handler.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

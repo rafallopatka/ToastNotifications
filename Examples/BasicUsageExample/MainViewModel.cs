@@ -13,7 +13,7 @@ namespace BasicUsageExample
             set
             {
                 _notificationSource = value;
-                OnPropertyChanged(nameof(NotificationSource));
+                OnPropertyChanged("NotificationSource");
             }
         }
 
@@ -47,7 +47,7 @@ namespace BasicUsageExample
         protected virtual void OnPropertyChanged(string propertyName = null)
         {
             var handler = PropertyChanged;
-            handler?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            if (handler != null) handler.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
