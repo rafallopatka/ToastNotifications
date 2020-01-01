@@ -65,6 +65,13 @@ namespace ToastNotifications.Display
             UpdateWindowPosition();
         }
 
+        public INotification CreateNotification<T>(Func<T> createNotificationFunc)
+            where T : INotification
+        {
+            return
+                (T)_dispatcher.Invoke(createNotificationFunc);
+        }
+
         private void Dispatch(Action action)
         {
             _dispatcher.Invoke(action);
@@ -120,9 +127,13 @@ namespace ToastNotifications.Display
         {
             if (notification != null)
             {
-                notification.DisplayPart.OnClose();
-                DelayAction.Execute(TimeSpan.FromMilliseconds(300), 
-                    () => _window?.CloseNotification(notification.DisplayPart),
+                DelayAction.Execute(
+                    TimeSpan.FromMilliseconds(300), 
+                    () =>
+                    {
+                        notification.DisplayPart.OnClose();
+                        _window?.CloseNotification(notification.DisplayPart);
+                    },
                     _dispatcher);
             }
         }

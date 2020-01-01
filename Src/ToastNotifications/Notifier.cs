@@ -28,7 +28,9 @@ namespace ToastNotifications
             where T: INotification
         {
             Configure();
-            _lifetimeSupervisor.PushNotification(createNotificationFunc());
+            var notification = _displaySupervisor.CreateNotification(createNotificationFunc);
+
+            _lifetimeSupervisor.PushNotification(notification);
         }
 
         private void Configure()
