@@ -61,7 +61,7 @@ namespace ToastNotifications.Display
             {
                 if (NotificationsList.GetItemCount() == 0)
                 {
-                    this.Visibility = Visibility.Collapsed;
+                    this.Visibility = Visibility.Hidden;
                 }
                 else
                 {
