@@ -1,35 +1,38 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{4DE2F314-B19F-423E-92D8-7D3A7D9ACEA2}</ProjectGuid>
-    <OutputType>library</OutputType>
-    <RootNamespace>ToastNotifications.Messages</RootNamespace>
-    <AssemblyName>ToastNotifications.Messages</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <TargetFrameworks>net40;net45;netcoreapp3.1</TargetFrameworks>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <WarningLevel>4</WarningLevel>
-    <TargetFrameworkProfile />
+    <AssemblyTitle>ToastNotifications.Messages</AssemblyTitle>
+    <Company>DevCrew.pl Rafał Łopatka</Company>
+    <Product>ToastNotifications.Messages</Product>
+    <Description>
+        ToastNotifications allows you to create and display rich notifications in WPF applications.
+        It's highly configurable with set of built-in options like positions, behaviours, themes and many others.
+        It's extendable, it gives you possibility to create custom and interactive notifications in simply manner.
+    </Description>
+    <Copyright>Copyright © Rafał Łopatka 2018</Copyright>
+    <Version>2.5.1.0</Version>
+    <AssemblyVersion>2.5.1.0</AssemblyVersion>
+    <FileVersion>2.5.1.0</FileVersion>
+    <UseWPF>true</UseWPF>
+    <Authors>DevCrew.pl Rafał Łopatka</Authors>
+    <PackageIconUrl>https://raw.githubusercontent.com/raflop/ToastNotifications/master-v2/Media/project-icon.png</PackageIconUrl>
+    <PackageLicenseUrl>https://github.com/raflop/ToastNotifications/blob/master-v2/license</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/raflop/ToastNotifications</PackageProjectUrl>
+    <PackageReleaseNotes>
+		Find out more at:
+		https://github.com/raflop/ToastNotifications/blob/master-v2/Docs/ReleaseNotes.md
+    </PackageReleaseNotes>
+    <PackageTags>WPF notifications, Toast notifications, XAML notifications, c# notifications, UI notifications, ToastNotifications, toasts, messages, notifications, WPF, XAML, UI, notify, message, toast</PackageTags>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>toast-notifications-icon.ico</ApplicationIcon>
@@ -43,94 +46,29 @@
   <PropertyGroup Condition="('$(Configuration)' == 'Debug') Or ('$(UseTemporarySignCert)' == 'true')">
     <AssemblyOriginatorKeyFile>../../Build/DevCrew.ToastNotifications_TemporaryKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Xml" />
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net40' ">
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Xaml">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Xaml" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ErrorExtensions.cs" />
-    <Compile Include="Error\ErrorDisplayPart.xaml.cs">
-      <DependentUpon>ErrorDisplayPart.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Error\ErrorMessage.cs" />
-    <Compile Include="InformationExtensions.cs" />
-    <Compile Include="Information\InformationDisplayPart.xaml.cs">
-      <DependentUpon>InformationDisplayPart.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Information\InformationMessage.cs" />
-    <Compile Include="Core\MessageBase.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <Compile Include="SuccessExtensions.cs" />
-    <Compile Include="Success\SuccessDisplayPart.xaml.cs">
-      <DependentUpon>SuccessDisplayPart.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Success\SuccessMessage.cs" />
-    <Compile Include="WarningExtensions.cs" />
-    <Compile Include="Warning\WarningDisplayPart.xaml.cs">
-      <DependentUpon>WarningDisplayPart.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Warning\WarningMessage.cs" />
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <None Include="DevCrew.ToastNotifications.pfx" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Error\ErrorDisplayPart.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Information\InformationDisplayPart.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Success\SuccessDisplayPart.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\Default.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Warning\WarningDisplayPart.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ToastNotifications\ToastNotifications.csproj">
-      <Project>{4a8879fc-9a6e-4904-910b-5c13fa5ed5be}</Project>
-      <Name>ToastNotifications</Name>
-    </ProjectReference>
+    <ProjectReference Include="..\ToastNotifications\ToastNotifications.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="toast-notifications-icon.ico" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
