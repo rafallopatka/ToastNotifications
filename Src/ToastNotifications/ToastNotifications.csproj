@@ -1,35 +1,38 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{4A8879FC-9A6E-4904-910B-5C13FA5ED5BE}</ProjectGuid>
-    <OutputType>library</OutputType>
-    <RootNamespace>ToastNotifications</RootNamespace>
-    <AssemblyName>ToastNotifications</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <TargetFramework>net40</TargetFramework>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <WarningLevel>4</WarningLevel>
-    <TargetFrameworkProfile />
+    <AssemblyTitle>ToastNotifications</AssemblyTitle>
+    <Company>DevCrew.pl Rafał Łopatka</Company>
+    <Product>ToastNotifications</Product>
+    <Description>
+        ToastNotifications allows you to create and display rich notifications in WPF applications.
+        It's highly configurable with set of built-in options like positions, behaviours, themes and many others.
+        It's extendable, it gives you possibility to create custom and interactive notifications in simply manner.
+    </Description>
+    <Copyright>Copyright © Rafał Łopatka 2018</Copyright>
+    <Version>2.5.1.0</Version>
+    <AssemblyVersion>2.5.1.0</AssemblyVersion>
+    <FileVersion>2.5.1.0</FileVersion>
+    <UseWPF>true</UseWPF>
+    <Authors>DevCrew.pl Rafał Łopatka</Authors>
+    <PackageIconUrl>https://raw.githubusercontent.com/raflop/ToastNotifications/master-v2/Media/project-icon.png</PackageIconUrl>
+    <PackageLicenseUrl>https://github.com/raflop/ToastNotifications/blob/master-v2/license</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/raflop/ToastNotifications</PackageProjectUrl>
+    <PackageReleaseNotes>
+		Find out more at:
+		https://github.com/raflop/ToastNotifications/blob/master-v2/Docs/ReleaseNotes.md
+    </PackageReleaseNotes>
+    <PackageTags>WPF notifications, Toast notifications, XAML notifications, c# notifications, UI notifications, ToastNotifications, toasts, messages, notifications, WPF, XAML, UI, notify, message, toast</PackageTags>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>toast-notifications-icon.ico</ApplicationIcon>
@@ -44,98 +47,15 @@
     <AssemblyOriginatorKeyFile>../../Build/DevCrew.ToastNotifications_TemporaryKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Xaml">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
+    <Reference Include="System.Xaml" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Lifetime\Clear\ClearAll.cs" />
-    <Compile Include="Lifetime\Clear\ClearByMessage.cs" />
-    <Compile Include="Lifetime\Clear\ClearByTag.cs" />
-    <Compile Include="Lifetime\Clear\ClearFirst.cs" />
-    <Compile Include="Lifetime\Clear\ClearLast.cs" />
-    <Compile Include="Core\DisplayOptions.cs" />
-    <Compile Include="Core\MessageOptions.cs" />
-    <Compile Include="Core\WindowsTaskBarLocation.cs" />
-    <Compile Include="Events\AllowedSourcesInputEventHandler.cs" />
-    <Compile Include="Events\BlockAllKeyInputEventHandler.cs" />
-    <Compile Include="Events\DelegatedInputEventHandler.cs" />
-    <Compile Include="Events\IKeyboardEventHandler.cs" />
-    <Compile Include="Lifetime\Clear\IClearStrategy.cs" />
-    <Compile Include="Notifier.cs" />
-    <Compile Include="Position\GdiPrimaryScreenPositionProvider.cs" />
-    <Compile Include="Position\PositionExtensions.cs" />
-    <Compile Include="Utilities\DateTimeNow.cs" />
-    <Compile Include="Utilities\DateTimeProvider.cs" />
-    <Compile Include="Utilities\DelayAction.cs" />
-    <Compile Include="Utilities\IDateTimeProvider.cs" />
-    <Compile Include="Utilities\IInterval.cs" />
-    <Compile Include="Utilities\Interval.cs" />
-    <Compile Include="Utilities\VisualTreeHelper.cs" />
-    <Compile Include="Utilities\WinApi.cs" />
-    <Page Include="Display\NotificationsWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="Core\EjectDirection.cs" />
-    <Compile Include="Core\INotification.cs" />
-    <Compile Include="Core\INotificationAnimator.cs" />
-    <Compile Include="Core\IPositionProvider.cs" />
-    <Compile Include="Core\NotificationBase.cs" />
-    <Compile Include="Core\NotificationDisplayPart.cs" />
-    <Compile Include="Core\NotifierConfiguration.cs" />
-    <Compile Include="Display\NotificationAnimator.cs" />
-    <Compile Include="Display\NotificationsDisplaySupervisor.cs" />
-    <Compile Include="Display\NotificationsItemsControl.cs" />
-    <Compile Include="Display\NotificationsWindow.xaml.cs">
-      <DependentUpon>NotificationsWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lifetime\CloseNotificationEventArgs.cs" />
-    <Compile Include="Lifetime\CountBasedLifetimeSupervisor.cs" />
-    <Compile Include="Lifetime\INotificationsLifeTimeSupervisor.cs" />
-    <Compile Include="Lifetime\MaximumNotificationCount.cs" />
-    <Compile Include="Lifetime\NotificationMetaData.cs" />
-    <Compile Include="Lifetime\NotificationsList.cs" />
-    <Compile Include="Lifetime\ShowNotificationEventArgs.cs" />
-    <Compile Include="Lifetime\TimeAndCountBasedLifetimeSupervisor.cs" />
-    <Compile Include="Position\ControlPositionProvider.cs" />
-    <Compile Include="Position\Corner.cs" />
-    <Compile Include="Position\PrimaryScreenPositionProvider.cs" />
-    <Compile Include="Position\WindowPositionProvider.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <None Include="DevCrew.ToastNotifications.pfx" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="toast-notifications-icon.ico" />
@@ -143,6 +63,4 @@
   <ItemGroup>
     <None Include="readme.txt" />
   </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
