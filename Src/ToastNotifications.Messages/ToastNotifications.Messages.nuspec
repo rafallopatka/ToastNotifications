@@ -25,7 +25,7 @@
     <references></references>
     <tags>WPF notifications, Toast notifications, XAML notifications, c# notifications, UI notifications, ToastNotifications, toasts, messages, notifications, WPF, XAML, UI, notify, message, toast</tags>
     <dependencies>
-        <dependency id="ToastNotifications" version="$version$" />
+        <dependency id="ToastNotifications-Axion" version="$version$" />
     </dependencies>
   </metadata>
 </package>

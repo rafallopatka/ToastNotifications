@@ -7,12 +7,12 @@ using System.Windows;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ToastNotifications")]
+[assembly: AssemblyTitle("ToastNotifications-Axion")]
 [assembly: AssemblyDescription("Toast notifications for WPF")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("DevCrew.pl Rafał Łopatka")]
+[assembly: AssemblyCompany("DevCrew.pl Rafał Łopatka and Axion BioSystems")]
 [assembly: AssemblyProduct("ToastNotifications")]
-[assembly: AssemblyCopyright("Copyright © Rafał Łopatka  2019")]
+[assembly: AssemblyCopyright("Copyright © Rafał Łopatka  2019 and Axion BioSystems")]
 [assembly: AssemblyTrademark("Rafał Łopatka")]
 [assembly: AssemblyCulture("")]
 
@@ -51,5 +51,5 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.5.1.0")]
-[assembly: AssemblyFileVersion("2.5.1.0")]
+[assembly: AssemblyVersion("2.5.2.0")]
+[assembly: AssemblyFileVersion("2.5.2.0")]

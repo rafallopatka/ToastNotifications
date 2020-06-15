@@ -7,7 +7,7 @@
     <ProjectGuid>{4A8879FC-9A6E-4904-910B-5C13FA5ED5BE}</ProjectGuid>
     <OutputType>library</OutputType>
     <RootNamespace>ToastNotifications</RootNamespace>
-    <AssemblyName>ToastNotifications</AssemblyName>
+    <AssemblyName>ToastNotifications-Axion</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -35,7 +35,7 @@
     <ApplicationIcon>toast-notifications-icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup Condition="('$(Configuration)' == 'Release') And ('$(UseTemporarySignCert)' != 'true')">
     <AssemblyOriginatorKeyFile>../../Build/DevCrew.ToastNotifications.pfx</AssemblyOriginatorKeyFile>

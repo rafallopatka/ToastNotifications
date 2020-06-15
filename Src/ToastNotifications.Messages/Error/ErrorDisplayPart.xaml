@@ -1,9 +1,9 @@
 ﻿<core:NotificationDisplayPart x:Class="ToastNotifications.Messages.Error.ErrorDisplayPart"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:core="clr-namespace:ToastNotifications.Core;assembly=ToastNotifications"
+             xmlns:core="clr-namespace:ToastNotifications.Core;assembly=ToastNotifications-Axion"
              mc:Ignorable="d" d:DesignWidth="250" >
     <Border x:Name="ContentWrapper" Style="{DynamicResource NotificationBorder}" Background="{DynamicResource ErrorColorBrush}">
         <Grid x:Name="ContentContainer">

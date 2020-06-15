@@ -7,7 +7,7 @@
     <ProjectGuid>{4DE2F314-B19F-423E-92D8-7D3A7D9ACEA2}</ProjectGuid>
     <OutputType>library</OutputType>
     <RootNamespace>ToastNotifications.Messages</RootNamespace>
-    <AssemblyName>ToastNotifications.Messages</AssemblyName>
+    <AssemblyName>ToastNotifications.Messages-Axion</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -35,7 +35,7 @@
     <ApplicationIcon>toast-notifications-icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup Condition="('$(Configuration)' == 'Release') And ('$(UseTemporarySignCert)' != 'true')">
     <AssemblyOriginatorKeyFile>../../Build/DevCrew.ToastNotifications.pfx</AssemblyOriginatorKeyFile>
@@ -124,13 +124,13 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="toast-notifications-icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\ToastNotifications\ToastNotifications.csproj">
       <Project>{4a8879fc-9a6e-4904-910b-5c13fa5ed5be}</Project>
       <Name>ToastNotifications</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="toast-notifications-icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

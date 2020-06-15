@@ -36,8 +36,21 @@ namespace ToastNotifications.Position
             if (source?.CompositionTarget == null)
                 return new Point(0, 0);
 
+            var elementSource = PresentationSource.FromVisual(_element);
+            if (elementSource == null)
+                return new Point(0, 0);
+
             Matrix transform = source.CompositionTarget.TransformFromDevice;
-            Point location = transform.Transform(_element.PointToScreen(new Point(0, 0)));
+            Point location;
+
+            try
+            {
+                location = transform.Transform(_element.PointToScreen(new Point(0, 0)));
+            }
+            catch (InvalidOperationException)
+            {
+                return new Point(0, 0);
+            }
 
             switch (_corner)
             {
