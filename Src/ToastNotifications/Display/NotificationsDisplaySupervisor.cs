@@ -61,6 +61,11 @@ namespace ToastNotifications.Display
 
         private void InternalClose(INotification notification)
         {
+            //Handle a case where client calls CustomMessage.Close() 
+            //but this object has already been disposed
+            if (_lifetimeSupervisor == null)
+                return;
+
             _lifetimeSupervisor.CloseNotification(notification);
             UpdateWindowPosition();
         }
