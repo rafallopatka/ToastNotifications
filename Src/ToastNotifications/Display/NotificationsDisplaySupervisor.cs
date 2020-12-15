@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Threading;
 using ToastNotifications.Core;
@@ -17,6 +18,7 @@ namespace ToastNotifications.Display
         private readonly IKeyboardEventHandler _keyboardEventHandler;
 
         private INotificationsLifetimeSupervisor _lifetimeSupervisor;
+        private List<INotificationsLifetimeSupervisor> _lifetimeSupervisorList;
         private NotificationsWindow _window;
 
         public NotificationsDisplaySupervisor(Dispatcher dispatcher,
@@ -30,6 +32,7 @@ namespace ToastNotifications.Display
             _lifetimeSupervisor = lifetimeSupervisor;
             _displayOptions = displayOptions;
             _keyboardEventHandler = keyboardEventHandler;
+            _lifetimeSupervisorList = new List<INotificationsLifetimeSupervisor>();
 
             _lifetimeSupervisor.ShowNotificationRequested += LifetimeSupervisorOnShowNotificationRequested;
             _lifetimeSupervisor.CloseNotificationRequested += LifetimeSupervisorOnCloseNotificationRequested;
@@ -42,6 +45,17 @@ namespace ToastNotifications.Display
         public void DisplayNotification(INotification notification)
         {
             Dispatch(() => InternalDisplayNotification(notification));
+        }
+
+        public void UpdateLifetimeSupervisor(INotificationsLifetimeSupervisor lifetimeSupervisor)
+        {
+            if (!_lifetimeSupervisorList.Contains(lifetimeSupervisor))
+            {
+                _lifetimeSupervisorList.Add(lifetimeSupervisor);
+                lifetimeSupervisor.ShowNotificationRequested += LifetimeSupervisorOnShowNotificationRequested;
+                lifetimeSupervisor.CloseNotificationRequested += LifetimeSupervisorOnCloseNotificationRequested;
+            }
+            _lifetimeSupervisor = lifetimeSupervisor;
         }
 
         private void InternalDisplayNotification(INotification notification)
@@ -61,7 +75,15 @@ namespace ToastNotifications.Display
 
         private void InternalClose(INotification notification)
         {
-            _lifetimeSupervisor.CloseNotification(notification);
+            //Needs to iterate all lifetimeSupervisor to check on what the notification was opened
+            foreach (var lifetimeSupervisor in _lifetimeSupervisorList)
+            {
+                if (lifetimeSupervisor.ContainsNotification(notification))
+                {
+                    lifetimeSupervisor.CloseNotification(notification);
+                    break;
+                }
+            }
             UpdateWindowPosition();
         }
 

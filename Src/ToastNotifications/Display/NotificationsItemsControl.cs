@@ -110,7 +110,13 @@ namespace ToastNotifications.Display
 
         public void AddNotification(NotificationDisplayPart notification)
         {
-            Items.Add(notification);
+            //Can't find why notifications are tried to add more than one time
+            //Without this condition an error was thrown
+            if (notification.Parent == null)
+            {
+                Items.Add(notification);
+            }
+
         }
 
         public void RemoveNotification(NotificationDisplayPart notification)

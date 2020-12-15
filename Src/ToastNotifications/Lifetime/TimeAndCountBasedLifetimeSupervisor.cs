@@ -145,6 +145,20 @@ namespace ToastNotifications.Lifetime
             }
         }
 
+        public bool ContainsNotification(INotification notification)
+        {
+            var enumerator = _notifications.GetEnumerator();
+            while (enumerator.MoveNext())
+            {
+                if (enumerator.Current.Value.Notification == notification)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public event EventHandler<ShowNotificationEventArgs> ShowNotificationRequested;
         public event EventHandler<CloseNotificationEventArgs> CloseNotificationRequested;
     }

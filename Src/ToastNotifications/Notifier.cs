@@ -76,6 +76,22 @@ namespace ToastNotifications
             _lifetimeSupervisor?.ClearMessages(clearStrategy);
         }
 
+        public void UpdateLifetimeSupervisor(INotificationsLifetimeSupervisor lifetimeSupervisor)
+        {
+            if (_configuration != null)
+            {
+                lock (_syncRoot)
+                {
+                    _configuration.LifetimeSupervisor = lifetimeSupervisor;
+                    _lifetimeSupervisor = lifetimeSupervisor;
+                    _lifetimeSupervisor.UseDispatcher(_configuration.Dispatcher);
+
+                    _displaySupervisor.UpdateLifetimeSupervisor(_lifetimeSupervisor);
+                }
+
+            }
+        }
+
         private bool _disposed = false;
 
         public object SyncRoot => _syncRoot;

@@ -7,6 +7,7 @@ namespace ToastNotifications.Lifetime
 {
     public interface INotificationsLifetimeSupervisor : IDisposable
     {
+        bool ContainsNotification(INotification notification);
         void PushNotification(INotification notification);
         void CloseNotification(INotification notification);
 
