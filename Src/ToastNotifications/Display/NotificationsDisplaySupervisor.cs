@@ -33,6 +33,7 @@ namespace ToastNotifications.Display
             _displayOptions = displayOptions;
             _keyboardEventHandler = keyboardEventHandler;
             _lifetimeSupervisorList = new List<INotificationsLifetimeSupervisor>();
+            _lifetimeSupervisorList.Add(lifetimeSupervisor);
 
             _lifetimeSupervisor.ShowNotificationRequested += LifetimeSupervisorOnShowNotificationRequested;
             _lifetimeSupervisor.CloseNotificationRequested += LifetimeSupervisorOnCloseNotificationRequested;
