@@ -1,22 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
-
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFrameworks>net40;netcoreapp3.1</TargetFrameworks>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
-
   <ItemGroup>
     <None Remove="toast-notifications-icon.ico" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\ToastNotifications.Messages\ToastNotifications.Messages.csproj" />
     <ProjectReference Include="..\..\ToastNotifications\ToastNotifications.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <Resource Include="toast-notifications-icon.ico" />
   </ItemGroup>
-
 </Project>
