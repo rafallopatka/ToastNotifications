@@ -97,7 +97,7 @@ notifier.Dispose();
 
 ## Documentation
 
-* [Relesae notes](https://github.com/raflop/ToastNotifications/blob/master-v2/Docs/ReleaseNotes.md)
+* [Release notes](https://github.com/raflop/ToastNotifications/blob/master-v2/Docs/ReleaseNotes.md)
   Release notes, description of new features, bug fixes and breaking changes.
   
 * [Upgrading from v1](https://github.com/raflop/ToastNotifications/blob/master-v2/Docs/Migration.md)
