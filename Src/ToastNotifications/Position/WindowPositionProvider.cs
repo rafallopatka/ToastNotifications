@@ -32,12 +32,14 @@ namespace ToastNotifications.Position
         {
             var parentPosition = ParentWindow.GetActualPosition();
 
-			switch(_corner)
+            switch (_corner)
             {
                 case Corner.TopRight:
                     return GetPositionForTopRightCorner(parentPosition, actualPopupWidth, actualPopupHeight);
                 case Corner.TopLeft:
                     return GetPositionForTopLeftCorner(parentPosition, actualPopupWidth, actualPopupHeight);
+                case Corner.TopCenter:
+                    return GetPositionForTopCenter(parentPosition, actualPopupWidth, actualPopupHeight);
                 case Corner.BottomRight:
                     return GetPositionForBottomRightCorner(parentPosition, actualPopupWidth, actualPopupHeight);
                 case Corner.BottomLeft:
@@ -69,6 +71,7 @@ namespace ToastNotifications.Position
             {
                 case Corner.TopRight:
                 case Corner.TopLeft:
+                case Corner.TopCenter:
                     EjectDirection = EjectDirection.ToBottom;
                     break;
                 case Corner.BottomRight:
@@ -104,7 +107,12 @@ namespace ToastNotifications.Position
 
         private Point GetPositionForTopRightCorner(Point parentPosition, double actualPopupWidth, double actualPopupHeight)
         {
-            return new Point( parentPosition.X + GetWindowWidth() - _offsetX - actualPopupWidth,  parentPosition.Y + _offsetY);
+            return new Point(parentPosition.X + GetWindowWidth() - _offsetX - actualPopupWidth, parentPosition.Y + _offsetY);
+        }
+
+        private Point GetPositionForTopCenter(Point parentPosition, double actualPopupWidth, double actualPopupHeight)
+        {
+            return new Point(parentPosition.X + (GetWindowWidth() - actualPopupWidth) / 2, parentPosition.Y + _offsetY);
         }
 
         public void Dispose()

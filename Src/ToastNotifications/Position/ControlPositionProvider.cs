@@ -45,6 +45,8 @@ namespace ToastNotifications.Position
                     return GetPositionForTopRightCorner(location, actualPopupWidth, actualPopupHeight);
                 case Corner.TopLeft:
                     return GetPositionForTopLeftCorner(location, actualPopupWidth, actualPopupHeight);
+                case Corner.TopCenter:
+                    return GetPositionForTopCenterCorner(location, actualPopupWidth, actualPopupHeight);
                 case Corner.BottomRight:
                     return GetPositionForBottomRightCorner(location, actualPopupWidth, actualPopupHeight);
                 case Corner.BottomCenter:
@@ -67,6 +69,7 @@ namespace ToastNotifications.Position
             {
                 case Corner.TopRight:
                 case Corner.TopLeft:
+                case Corner.TopCenter:
                     EjectDirection = EjectDirection.ToBottom;
                     break;
                 case Corner.BottomRight:
@@ -105,6 +108,11 @@ namespace ToastNotifications.Position
             return new Point(location.X + _element.ActualWidth - _offsetX - actualPopupWidth, location.Y + _offsetY);
         }
 
+        private Point GetPositionForTopCenterCorner(Point location, double actualPopupWidth, double actualPopupHeight)
+        {
+            return new Point(location.X + (_element.ActualWidth - _offsetX - actualPopupWidth) / 2, location.Y + _offsetY);
+        }
+
         public void Dispose()
         {
             ParentWindow.LocationChanged -= ParentWindowOnLocationChanged;
@@ -126,11 +134,11 @@ namespace ToastNotifications.Position
             RequestUpdatePosition();
         }
 #pragma warning disable CS0067
-		public event EventHandler UpdatePositionRequested;
+        public event EventHandler UpdatePositionRequested;
 
         public event EventHandler UpdateEjectDirectionRequested;
 
         public event EventHandler UpdateHeightRequested;
 #pragma warning restore CS0067
-	}
+    }
 }

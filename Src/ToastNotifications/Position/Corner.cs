@@ -4,6 +4,7 @@
     {
         TopRight,
         TopLeft,
+        TopCenter,
         BottomRight,
         BottomLeft,
         BottomCenter
