@@ -4,6 +4,7 @@
     {
         Window,
         Screen,
-        Control
+        Control,
+        ScreenGdi
     }
 }

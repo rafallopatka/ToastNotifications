@@ -69,6 +69,10 @@ namespace ConfigurationExample
                 {
                     return new PrimaryScreenPositionProvider(corner, 5, 5);
                 }
+                case PositionProviderType.ScreenGdi:
+                {
+                    return new GdiPrimaryScreenPositionProvider(corner, 5, 5);
+                }
                 case PositionProviderType.Control:
                 {
                     var mainWindow = Application.Current.MainWindow as MainWindow;

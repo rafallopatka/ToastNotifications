@@ -51,6 +51,8 @@ namespace ToastNotifications.Position
                     return GetPositionForBottomCenterCorner(location, actualPopupWidth, actualPopupHeight);
                 case Corner.BottomLeft:
                     return GetPositionForBottomLeftCorner(location, actualPopupWidth, actualPopupHeight);
+                case Corner.TopCenter:
+                    return GetPositionForTopCenterCorner(location, actualPopupWidth, actualPopupHeight);
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -67,6 +69,7 @@ namespace ToastNotifications.Position
             {
                 case Corner.TopRight:
                 case Corner.TopLeft:
+                case Corner.TopCenter:
                     EjectDirection = EjectDirection.ToBottom;
                     break;
                 case Corner.BottomRight:
@@ -103,6 +106,11 @@ namespace ToastNotifications.Position
         private Point GetPositionForTopRightCorner(Point location, double actualPopupWidth, double actualPopupHeight)
         {
             return new Point(location.X + _element.ActualWidth - _offsetX - actualPopupWidth, location.Y + _offsetY);
+        }
+
+        private Point GetPositionForTopCenterCorner(Point location, double actualPopupWidth, double actualPopupHeight)
+        {
+            return new Point(location.X + (_element.ActualWidth - _offsetX - actualPopupWidth) / 2, location.Y + _offsetY);
         }
 
         public void Dispose()
