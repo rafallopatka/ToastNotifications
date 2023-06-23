@@ -39,14 +39,15 @@
         
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Orientation="Horizontal"  VerticalAlignment="Center">
                 <TextBlock Text="Position provider:" VerticalAlignment="Center" Margin="5" FontWeight="Bold" />
                 <RadioButton VerticalAlignment="Center" IsChecked="{Binding Path=PositionProviderType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=Window}">Window</RadioButton>
                 <RadioButton VerticalAlignment="Center" IsChecked="{Binding Path=PositionProviderType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=Screen}" Margin="10 0">Main screen</RadioButton>
+                <RadioButton VerticalAlignment="Center" IsChecked="{Binding Path=PositionProviderType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=ScreenGdi}" Margin="10 0">Main screen(Gdi)</RadioButton>
                 <RadioButton VerticalAlignment="Center" IsChecked="{Binding Path=PositionProviderType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=Control}">Control</RadioButton>
             </StackPanel>
             <DockPanel Grid.Column="1" Grid.ColumnSpan="2" >
@@ -55,7 +56,8 @@
                 <RadioButton VerticalAlignment="Center" IsChecked="{Binding Path=Corner, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=BottomLeft}" Margin="20 0">BottomLeft</RadioButton>
                 <RadioButton VerticalAlignment="Center" IsChecked="{Binding Path=Corner, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=TopRight}">TopRight</RadioButton>
                 <RadioButton VerticalAlignment="Center" IsChecked="{Binding Path=Corner, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=BottomRight}" Margin="20 0">BottomRight</RadioButton>
-                <RadioButton VerticalAlignment="Center" IsChecked="{Binding Path=Corner, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=BottomCenter}">BottomCenter</RadioButton>
+                <RadioButton VerticalAlignment="Center" IsChecked="{Binding Path=Corner, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=TopCenter}">TopCenter</RadioButton>
+                <RadioButton VerticalAlignment="Center" IsChecked="{Binding Path=Corner, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=BottomCenter}" Margin="20 0">BottomCenter</RadioButton>
             </DockPanel>
         </Grid>
 
